@@ -14,7 +14,7 @@ RUN cd astra && ./configure.sh && make && make install
 
 RUN mkdir /var/www/stalker_portal/
 
-COPY stalker_portal/storage /var/www/stalker_portal/
+COPY stalker_portal/storage /var/www/stalker_portal/storage
 
 RUN cd /var/www/stalker_portal/storage && chmod a+x install.sh && ./install.sh
 
