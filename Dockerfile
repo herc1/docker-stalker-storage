@@ -12,13 +12,11 @@ RUN git clone https://bitbucket.org/cesbo/astra.git
 
 RUN cd astra && ./configure.sh && make && make install
 
+RUN mkdir /var/www/stalker_portal/
+
 COPY stalker_portal/server /var/www/stalker_portal/
 
-RUN cd /var/www/stalker_portal/server
-
-RUN chmod a+x install.sh
-
-RUN ./install.sh
+RUN cd /var/www/stalker_portal/server && chmod a+x install.sh && ./install.sh
 
 
 
