@@ -18,6 +18,21 @@ COPY stalker_portal/storage /var/www/stalker_portal/storage
 
 RUN cd /var/www/stalker_portal/storage && chmod a+x install.sh && ./install.sh
 
+RUN mkdir /var/www/media
+
+RUN mkdir -p -m 0777 /media/raid0
+
+RUN mkdir /opt/conf
+
+RUN sed -i 's/Listen 80/Listen 88/' /etc/apache2/ports.conf
+
+COPY entrypoint.sh entrypoint.sh
+
+EXPOSE 88
+
+EXPOSE 80
+
+ENTRYPOINT ["/entrypoint.sh"]
 
 
 
