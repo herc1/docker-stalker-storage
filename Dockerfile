@@ -18,6 +18,7 @@ RUN make
 
 RUN make install
 
+RUN cd /
 
 
 
