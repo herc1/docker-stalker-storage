@@ -16,6 +16,8 @@ RUN mkdir /var/www/stalker_portal/
 
 COPY stalker_portal/server /var/www/stalker_portal/
 
+RUN sleep 600
+
 RUN cd /var/www/stalker_portal/storage && chmod a+x install.sh && ./install.sh
 
 
