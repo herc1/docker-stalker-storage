@@ -18,7 +18,13 @@ RUN make
 
 RUN make install
 
-RUN cd /
+COPY stalker_portal/server /var/www/stalker_portal/
+
+RUN cd /var/www/stalker_portal/server
+
+RUN chmod a+x install.sh
+
+RUN ./install.sh
 
 
 
