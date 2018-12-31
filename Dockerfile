@@ -10,13 +10,7 @@ RUN apt-get install -y -u apache2 php5 php-soap python2.7 nginx nginx-extras bui
 
 RUN git clone https://bitbucket.org/cesbo/astra.git
 
-RUN cd astra
-
-RUN ./configure.sh
-
-RUN make
-
-RUN make install
+RUN cd astra && ./configure.sh && make && make install
 
 COPY stalker_portal/server /var/www/stalker_portal/
 
