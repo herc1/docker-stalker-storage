@@ -18,6 +18,8 @@ COPY stalker_portal/storage /var/www/stalker_portal/storage
 
 RUN cd /var/www/stalker_portal/storage && chmod a+x install.sh && ./install.sh
 
+COPY dumpstream.lua /var/www/stalker_portal/storage/dumpstream.lua
+
 RUN mkdir /var/www/media
 
 RUN mkdir -p -m 0777 /media/raid0
