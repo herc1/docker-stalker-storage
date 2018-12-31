@@ -10,6 +10,8 @@ mkdir -m 0777 /media/raid0/records/archive
 ln -s /media/raid0/records/archive/ /var/www/
 ln -s /media/raid0/mac/ /var/www/media/${storage_name}
 
+start tvarchivetasks
+
 services=(cron apache2 nginx)
 while true; do
  for service in ${services[@]}; do

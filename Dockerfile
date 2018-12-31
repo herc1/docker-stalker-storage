@@ -26,6 +26,10 @@ RUN mkdir /opt/conf
 
 RUN sed -i 's/Listen 80/Listen 88/' /etc/apache2/ports.conf
 
+RUN rm -f /etc/apache2/sites-enabled/000-default.conf
+
+RUN rm -f /etc/nginx/sites-enabled/default
+
 COPY entrypoint.sh entrypoint.sh
 
 EXPOSE 88
