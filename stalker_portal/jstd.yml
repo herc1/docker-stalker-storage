@@ -1,5 +1,0 @@
-load:
-  - c/downloads.js
-
-test:
-  - test/*.js
