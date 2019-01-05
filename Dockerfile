@@ -20,6 +20,8 @@ COPY stalker_portal-5.2.0.zip /
 
 RUN unzip stalker_portal-5.2.0.zip -d stalker_portal
 
+RUN rm -rf stalker_portal-5.2.0.zip
+
 RUN cd stalker_portal/* && cp -r storage/ /var/www/stalker_portal/
 
 RUN rm -rf stalker_portal

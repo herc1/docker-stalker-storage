@@ -10,6 +10,10 @@ mkdir -m 0777 /media/raid0/records/archive
 ln -s /media/raid0/records/archive/ /var/www/
 ln -s /media/raid0/mac/ /var/www/media/${storage_name}
 
+if [ -n $TZ ]; then
+ ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+fi
+
 sudo -u www-data bash /var/www/stalker_portal/storage/tvarchive.sh
 
 services=(cron apache2 nginx)
