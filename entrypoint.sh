@@ -10,7 +10,7 @@ mkdir -m 0777 /media/raid0/records/archive
 ln -s /media/raid0/records/archive/ /var/www/
 ln -s /media/raid0/mac/ /var/www/media/${storage_name}
 
-if [ -n $TZ ]; then
+if [ -n ${TZ} ]; then
  ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 fi
 
