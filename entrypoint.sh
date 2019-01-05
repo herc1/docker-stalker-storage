@@ -10,7 +10,7 @@ mkdir -m 0777 /media/raid0/records/archive
 ln -s /media/raid0/records/archive/ /var/www/
 ln -s /media/raid0/mac/ /var/www/media/${storage_name}
 
-sudo -u www-data bash @STORAGE_PATH@/tvarchive.sh > /dev/null 2>&1
+sudo -u www-data bash /var/www/stalker_portal/storage/tvarchive.sh
 
 services=(cron apache2 nginx)
 while true; do
