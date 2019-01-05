@@ -1,5 +1,9 @@
 FROM ubuntu:14.04
 
+ENV stalker_version 520
+
+ENV stalker_zip stalker_portal-5.2.0.zip
+
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
 RUN apt-get update
@@ -16,15 +20,17 @@ RUN rm -rf astra
 
 RUN mkdir /var/www/stalker_portal/
 
-COPY stalker_portal-5.2.0.zip /
+COPY ${stalker_zip} /
 
-RUN unzip stalker_portal-5.2.0.zip -d stalker_portal
-
-RUN rm -rf stalker_portal-5.2.0.zip
+RUN unzip ${stalker_zip} -d stalker_portal
 
 RUN cd stalker_portal/* && cp -r storage/ /var/www/stalker_portal/
 
 RUN rm -rf stalker_portal
+
+RUN rm -rf ${stalker_zip}
+
+RUN echo ${stalker_version} > stalker_version
 
 RUN cd /var/www/stalker_portal/storage && chmod a+x install.sh && ./install.sh
 
@@ -42,6 +48,10 @@ RUN rm -f /etc/apache2/sites-enabled/000-default.conf
 
 RUN rm -f /etc/nginx/sites-enabled/default
 
+COPY conf/apache2/default.conf /etc/apache2/sites-available/
+
+COPY conf/nginx/default.conf /etc/nginx/conf.d/
+
 COPY entrypoint.sh entrypoint.sh
 
 EXPOSE 88
@@ -49,6 +59,3 @@ EXPOSE 88
 EXPOSE 80
 
 ENTRYPOINT ["/entrypoint.sh"]
-
-
-
