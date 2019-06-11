@@ -1,8 +1,8 @@
 #!/bin/bash
 
 cp -f /opt/conf/nginx/*.conf /etc/nginx/conf.d/
-cp -f /opt/conf/apache2/*.conf /etc/apache2/sites-available/
-cp -f /opt/conf/apache2/conf-available/*.conf /etc/apache2/conf-available/
+cp -f /opt/conf/apache2/*.conf /etc/apache2/sites-enabled/
+cp -f /opt/conf/apache2/conf-enabled/*.conf /etc/apache2/conf-enabled/
 cp -f /opt/conf/config.php /var/www/stalker_portal/storage/
 
 mkdir -p -m 0777 /media/raid0/storage /media/raid0/karaoke /media/raid0/records /media/raid0/mac
